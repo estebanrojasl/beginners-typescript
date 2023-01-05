@@ -1,10 +1,14 @@
 import { expect, it } from 'vitest';
 
+type thisone = {
+  [index: string]: string;
+};
+
 const createCache = () => {
   // index signature
-  const cache: { [index: string]: string | boolean } = {};
+  const cache: thisone = {};
 
-  const add = (id: string, value: string | boolean) => {
+  const add = (id: string, value: string) => {
     cache[id] = value;
   };
 
@@ -22,7 +26,7 @@ const createCache = () => {
 it('Should add values to the cache', () => {
   const cache = createCache();
 
-  cache.add('123', true);
+  cache.add('123', 'Matt');
 
   expect(cache.cache['123']).toEqual('Matt');
 });
